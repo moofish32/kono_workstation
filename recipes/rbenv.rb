@@ -27,12 +27,6 @@ elsif platform_family?('debian')
   include_recipe "rbenv::user_install"
 end
 
-rbenv_ruby "jruby-1.7.4" do
-  user node['current_user']
-  action :install
-end
-rbenv_ruby "2.0.0-p247" do
-  user node['current_user']
-  action :install
-end
+rbenv_ruby "jruby-1.7.4"
+rbenv_ruby "2.0.0-p247"
 rbenv_global "2.0.0-p247"
