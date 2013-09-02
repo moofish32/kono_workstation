@@ -18,9 +18,16 @@ git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles/.oh-my-zsh"
 end
 
 execute 'dotfiles install' do
-  command "pushd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh install.sh"
+  command "pushd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh chef_install.sh"
   user node['current_user']
   action :run
+end
+
+git "#{node['etc']['passwd'][node['current_user']]['dir']}/.vim/bundle/vundle" do
+  repository 'https://github.com/gmarik/vundle.git'
+  user node['current_user']
+  reference 'master'
+  action :sync
 end
 
 execute 'Run vundle' do
