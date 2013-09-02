@@ -28,7 +28,6 @@ if platform?('mac_os_x')
   end
 
   execute 'Install jruby-1.7.4' do
-    user node['current_user']
     command 'export RBENV_ROOT=/usr/local/var/rbenv;export PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/bin:/usr/local/sbin:$PATH;eval "$(rbenv init -)";echo `which gem`;/usr/local/bin/rbenv install jruby-1.7.4'
   end
 
