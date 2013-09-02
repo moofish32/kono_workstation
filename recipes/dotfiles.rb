@@ -20,6 +20,10 @@ if platform?('mac_os_x')
   package 'ctags' do
     action [:install, :upgrade]
   end
+
+  package 'tree' do
+    action [:install, :upgrade]
+  end
 elsif platform?('debian')
   package 'exuberant-ctags' do
     action [:install, :upgrade]
