@@ -9,7 +9,7 @@
 include_recipe "applications::default"
 include_recipe "rbenv"
 include_recipe "ruby_build"
-include_recipe "applications::java"
+include_recipe "java::oracle"
 
 if platform?('mac_os_x')
   package 'rbenv' do
