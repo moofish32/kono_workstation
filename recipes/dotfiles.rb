@@ -14,3 +14,13 @@ execute 'dotfiles install' do
   user node['current_user']
   action :run
 end
+
+if platform?('mac_os_x')
+  package 'ctags' do
+    action [:install, :upgrade]
+  end
+elsif platform?('debian')
+  package 'exuberant-ctags' do
+    action [:install, :upgrade]
+  end
+end
