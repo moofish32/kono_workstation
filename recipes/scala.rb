@@ -1,3 +1,4 @@
+include_recipe 'applications::default'
 include_recipe 'java'
 
 if platform?('mac_os_x')

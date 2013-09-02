@@ -1,3 +1,4 @@
+include_recipe 'applications::default'
 include_recipe 'git'
 include_recipe 'zsh' # bkonowitz dotfiles expect zsh
 
