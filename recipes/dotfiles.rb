@@ -30,10 +30,11 @@ git "#{node['etc']['passwd'][node['current_user']]['dir']}/.vim/bundle/vundle" d
   action :sync
 end
 
-execute 'Run vundle' do
-  command "vim -u ~/.vimrc.bundles +BundleInstall +qa"
-  user node['current_user']
-end
+#  this is currently causing a ruckous... commented for now
+# execute 'Run vundle' do
+#   command "vim -u ~/.vimrc.bundles +BundleInstall +qa"
+#   user node['current_user']
+# end
 
 if platform?('mac_os_x')
   package 'ctags' do
