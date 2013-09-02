@@ -22,9 +22,14 @@ if platform?('mac_os_x')
     action [:install, :upgrade]
   end
 
-  execute 'Install rubies as user' do
+  execute 'Install ruby 2.0.0-p247' do
     user node['current_user']
-    command "export RBENV_ROOT=/usr/local/var/rbenv;/usr/local/bin/rbenv install jruby-1.7.4;/usr/local/bin/rbenv install 2.0.0-p247;/usr/local/bin/rbenv global 2.0.0-p247"
+    command "export RBENV_ROOT=/usr/local/var/rbenv;/usr/local/bin/rbenv install 2.0.0-p247;/usr/local/bin/rbenv global 2.0.0-p247"
+  end
+
+  execute 'Install jruby-1.7.4' do
+    user node['current_user']
+    command "export RBENV_ROOT=/usr/local/var/rbenv;/usr/local/bin/rbenv install jruby-1.7.4"
   end
 
 elsif platform_family?('debian')
