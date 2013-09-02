@@ -9,7 +9,7 @@ git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles" do
 end
 
 execute 'dotfiles install' do
-  command "sh #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles/install.sh"
+  command " pushd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh install.sh;popd"
   user node['current_user']
   action :run
 end
