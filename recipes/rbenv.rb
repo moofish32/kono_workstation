@@ -29,7 +29,7 @@ if platform?('mac_os_x')
 
   execute 'Install jruby-1.7.4' do
     user node['current_user']
-    command 'export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin;export RBENV_ROOT=/usr/local/var/rbenv;/usr/local/bin/rbenv install jruby-1.7.4'
+    command 'export PATH=/usr/local/var/rbenv/shims:/usr/local/bin:/usr/local/sbin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin;export RBENV_ROOT=/usr/local/var/rbenv;/usr/local/bin/rbenv install jruby-1.7.4'
   end
 
 elsif platform_family?('debian')
