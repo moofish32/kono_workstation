@@ -4,7 +4,7 @@ if platform?('mac_os_x')
   package 'sqlite' do
     action [:install, :upgrade]
   end
-elsif platform?('debian')
+elsif platform_family?('debian')
   package 'sqlite3' do
     action [:install, :upgrade]
   end

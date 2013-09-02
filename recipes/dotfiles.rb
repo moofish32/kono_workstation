@@ -24,7 +24,7 @@ if platform?('mac_os_x')
   package 'tree' do
     action [:install, :upgrade]
   end
-elsif platform?('debian')
+elsif platform_family?('debian')
   package 'exuberant-ctags' do
     action [:install, :upgrade]
   end
