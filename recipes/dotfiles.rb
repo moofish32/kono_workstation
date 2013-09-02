@@ -23,6 +23,11 @@ execute 'dotfiles install' do
   action :run
 end
 
+execute 'Run vundle' do
+  command "vim -u ~/.vimrc.bundles +BundleInstall +qa"
+  user node['current_user']
+end
+
 if platform?('mac_os_x')
   package 'ctags' do
     action [:install, :upgrade]
