@@ -1,4 +1,5 @@
 include_recipe 'git'
+include_recipe 'zsh' # bkonowitz dotfiles expect zsh
 
 git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles" do
   repository 'git://github.com/bkonowitz/dotfiles.git'
