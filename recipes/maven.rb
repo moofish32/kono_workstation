@@ -1,5 +1,5 @@
 include_recipe 'applications::default'
-include_recipe 'java'
+include_recipe 'applications::java'
 
 package 'maven' do
   action [:install, :upgrade]

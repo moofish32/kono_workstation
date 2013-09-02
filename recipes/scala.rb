@@ -1,5 +1,5 @@
 include_recipe 'applications::default'
-include_recipe 'java'
+include_recipe 'applications::java'
 
 if platform?('mac_os_x')
   package 'scala' do
