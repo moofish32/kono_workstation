@@ -1,5 +1,5 @@
 include_recipe 'applications::default'
-include_recipe 'git'
+#include_recipe 'git'
 include_recipe 'zsh' # bkonowitz dotfiles expect zsh
 
 git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles" do
@@ -10,8 +10,15 @@ git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles" do
   not_if { File.exist?("#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles") }
 end
 
+git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles/.oh-my-zsh" do
+  repository 'https://github.com/robbyrussell/oh-my-zsh'
+  user node['current_user']
+  reference 'master'
+  action :sync
+end
+
 execute 'dotfiles install' do
-  command " pushd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh install.sh;popd"
+  command "pushd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh install.sh"
   user node['current_user']
   action :run
 end
