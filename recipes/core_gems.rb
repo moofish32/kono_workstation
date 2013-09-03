@@ -8,6 +8,8 @@ if platform?('mac_os_x')
     cwd '/tmp'
     code <<-EOH
     sudo su - bkonowitz
+    export RBENV_ROOT=/usr/local/var/rbenv
+    export PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/bin:/usr/local/sbin:$PATH
     eval "$(rbenv init -)"
     rbenv shell 2.0.0-p247
     ruby -v
