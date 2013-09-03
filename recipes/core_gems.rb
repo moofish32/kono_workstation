@@ -4,9 +4,10 @@ include_recipe 'kono_workstation::rbenv'
 if platform?('mac_os_x')
   #  taking a different approach ....
   bash 'install gems for 2.0.0-p247' do
-    user node['current_user']
+    user 'root'
     cwd '/tmp'
     code <<-EOH
+    sudo su - bkonowitz
     eval "$(rbenv init -)"
     rbenv shell 2.0.0-p247
     ruby -v
