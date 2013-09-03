@@ -29,6 +29,7 @@ if platform?('mac_os_x')
 
   execute 'Install jruby-1.7.4' do
     command 'export RBENV_ROOT=/usr/local/var/rbenv;export PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/bin:/usr/local/sbin:$PATH;eval "$(rbenv init -)";/usr/local/bin/rbenv install jruby-1.7.4'
+    not_if { File.exists? '/usr/local/var/rbenv/versions/jruby-1.7.4/' }
   end
 
 elsif platform_family?('debian')
