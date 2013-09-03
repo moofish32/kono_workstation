@@ -7,7 +7,7 @@ if platform?('mac_os_x')
   end
 
   execute 'Installing bundler, pg, rails, puma for jruby-1.7.4' do
-    command 'export RBENV_ROOT=/usr/local/var/rbenv;export PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/bin:/usr/local/sbin:$PATH;eval "$(rbenv init -)";rbenv shell jruby-1.7.4;gem install bundler pg rails rspec thor puma guard'
+    command 'export RBENV_ROOT=/usr/local/var/rbenv;export PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/bin:/usr/local/sbin:$PATH;eval "$(rbenv init -)";rbenv shell jruby-1.7.4;gem install bundler jdbc-postgres rails rspec thor puma guard'
   end
 elsif platform_family?('debian')
   %w{ 2.0.0-p247 jruby-1.7.4 }.each do |ver|
