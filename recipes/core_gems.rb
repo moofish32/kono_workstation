@@ -10,6 +10,8 @@ if platform?('mac_os_x')
     sudo su - bkonowitz
     export RBENV_ROOT=/usr/local/var/rbenv
     export PATH=$RBENV_ROOT/shims:$RBENV_ROOT/bin:/usr/local/bin:/usr/local/sbin:$PATH
+    export GEM_HOME=/usr/local/var/rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0
+    export GEM_PATH=/usr/local/var/rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0
     eval "$(rbenv init -)"
     rbenv shell 2.0.0-p247
     ruby -v
