@@ -33,6 +33,10 @@ if platform?('mac_os_x')
     not_if { File.exists? '/usr/local/var/rbenv/versions/jruby-1.7.4/' }
   end
 
+  execute 'Chown the rbenv versions' do
+    command "chown -R #{node['current_user']} /usr/local/var/rbenv"
+  end
+
 elsif platform_family?('debian')
   include_recipe "ruby_build"
   include_recipe "rbenv::user_install"
