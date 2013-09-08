@@ -18,6 +18,7 @@ if platform?('mac_os_x')
     gem env
     gem install bundler pg rails rspec thor unicorn guard --no-rdoc --no-ri
     EOH
+    not_if { Dir.glob('/usr/local/var/rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0/gems/rails*').any? }
   end
 
   bash 'install gems for jruby-1.7.4' do
@@ -35,6 +36,7 @@ if platform?('mac_os_x')
     gem env
     gem install bundler jdbc-postgres rails rspec thor puma guard --no-rdoc --no-ri
     EOH
+    not_if { Dir.glob('/usr/local/var/rbenv/versions/jruby-1.7.4/lib/ruby/gems/shared/gems/rails*').any? }
   end
 elsif platform_family?('debian')
   %w{ 2.0.0-p247 jruby-1.7.4 }.each do |ver|
