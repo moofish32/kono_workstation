@@ -38,11 +38,25 @@ if platform?('mac_os_x')
   end
 
 elsif platform_family?('debian')
-  include_recipe "ruby_build"
-  include_recipe "rbenv::user_install"
 
-  rbenv_ruby "jruby-1.7.4"
-  rbenv_ruby "2.0.0-p247"
-  rbenv_global "2.0.0-p247"
+node.default['rbenv']['user_installs'] = [
+  { 'user'    => node.current_user,
+    'rubies'  => ['1.9.3-p448', 'jruby-1.7.4',  '2.0.0-p247'],
+    'global'  => '1.9.3-p448',
+    'gems'    => {
+      '1.9.3-p448'    => [
+        { 'name'    => 'bundler'},
+        { 'name'    => 'rake' }
+      ],
+      'jruby-1.7.4' => [
+        { 'name'    => 'bundler'},
+        { 'name'    => 'rake' }
+      ]
+    }
+  }
+]
+  include_recipe "ruby_build"
+  include_recipe "rbenv::user"
+
 end
 
