@@ -27,21 +27,19 @@ if platform?('mac_os_x')
   end
 end
 
-if platform?('ubuntu') 
+if platform?('ubuntu')
   sublime_download = "http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2%20x64.tar.bz2"
-  sublime_tar_ball = "Sublime Text 2.0.2 x64.tar.bz2"
+  sublime_tar_ball = "\'Sublime Text 2.0.2 x64.tar.bz2\'"
   script "sublime text 2" do
     interpreter "bash"
     user "root"
     cwd "/tmp/"
     code <<-EOH
-    rm -rf /opt/Sublime\ Text\ 2
-    mkdir /opt/Sublime\ Text\ 2
-    cd /opt/Sublime\ Text\ 2
+    rm -rf '/opt/Sublime Text 2'
+    cd '/opt/Sublime Text 2'
     wget #{sublime_download}
-    tar -xf #{sublime_tar_ball}
-    find . -maxdepth 1 -name "sublime_text*" -type d | head -1 | xargs -i sudo ln -s {} sublime
-    rm -rf Sbulime*.tar.bz2
+    sudo tar -xf #{sublime_tar_ball}
+    sudo mv 'Sublime Text 2' /opt
     EOH
   end
 end
@@ -66,14 +64,14 @@ template File.expand_path("Preferences.sublime-settings", File.join(sublime_user
   action :create_if_missing
 end
 
-filename = "Package Control.sublime-package"
+filename = "Package\\ Control.sublime-package"
 
 recursive_directories(["#{package_dir}"]) do
   owner node['current_user']
 end
 
 remote_file "#{package_dir}/#{filename}" do
-  source 'http://sublime.wbond.net/Package%20Control.sublime-package'
-  owner node['current_user']
-  :create_if_missing
+   source 'https://sublime.wbond.net/Package%20Control.sublime-package'
+   owner node['current_user']
+   :create_if_missing
 end
