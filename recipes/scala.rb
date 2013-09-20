@@ -9,3 +9,13 @@ if platform?('mac_os_x')
     action [:install, :upgrade]
   end
 end # TODO add linux support
+
+if platform?('ubuntu')
+  include_recipe 'apt'
+  package 'scala' do
+    action [:install, :upgrade]
+  end
+  package 'sbt' do
+    action [:install, :upgrade]
+  end
+end
