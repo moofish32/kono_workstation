@@ -18,7 +18,7 @@ git "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles/.oh-my-zsh"
 end
 
 execute 'dotfiles install' do
-  command "pushd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh chef_install.sh"
+  command "cd #{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles;sh chef_install.sh"
   user node['current_user']
   action :run
 end
