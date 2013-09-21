@@ -32,7 +32,8 @@ if platform?('ubuntu')
 end
 
 directory package_dir do
-  action :create_if_missing
+  action :create
+  owner node['current_user']
 end
 
 sublime_user_path = sublime_package_path.dup << "User"
