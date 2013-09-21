@@ -32,7 +32,7 @@ if platform?('ubuntu')
 end
 
 directory package_dir do
-  action: create_if_missing
+  action :create_if_missing
 end
 
 sublime_user_path = sublime_package_path.dup << "User"
