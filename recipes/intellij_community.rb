@@ -29,6 +29,6 @@ elsif platform_family?('debian')
 		rm -rf idea-IC*.tar.gz
 		EOH
 
-		# only_if do ! File.exists?("/opt/intellij/idea-IC/bin/idea.sh") end
+		only_if do ! File.exists?("/opt/intellij/idea-IC/bin/idea.sh") end
 	end
 end

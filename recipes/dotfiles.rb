@@ -48,4 +48,10 @@ elsif platform_family?('debian')
   package 'exuberant-ctags' do
     action [:install, :upgrade]
   end
+  cookbook_file "#{node['etc']['passwd'][node['current_user']]['dir']}/.dotfiles/.oh-my-zsh/themes" do
+    source "kono.zsh-theme"
+    owner node['current_user']
+    backup false
+    mode "0777"
+  end
 end

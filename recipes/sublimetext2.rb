@@ -31,6 +31,10 @@ if platform?('ubuntu')
   end
 end
 
+directory package_dir do
+  action: create_if_missing
+end
+
 sublime_user_path = sublime_package_path.dup << "User"
 
 recursive_directories sublime_user_path do
@@ -50,7 +54,7 @@ template File.expand_path("Preferences.sublime-settings", File.join(sublime_user
   action :create_if_missing
 end
 
-filename = "Package\\ Control.sublime-package"
+filename = "Package Control.sublime-package"
 
 recursive_directories(["#{package_dir}"]) do
   owner node['current_user']
