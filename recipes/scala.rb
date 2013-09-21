@@ -13,9 +13,9 @@ end # TODO add linux support
 if platform?('ubuntu')
   include_recipe 'apt'
   package 'scala' do
-    action [:install, :upgrade]
+    action [:install]
   end
   package 'sbt' do
-    action [:install, :upgrade]
+    action [:install]
   end
 end
